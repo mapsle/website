@@ -73,7 +73,7 @@ const Navbar1 = ({
   let [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <section className="p-4">
+    <section className="p-4 from-white to-transparent bg-gradient-to-b">
       <div className="container mx-auto">
         {/* Desktop Menu */}
         <nav className="hidden justify-between lg:flex">
