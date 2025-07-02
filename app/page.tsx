@@ -9,7 +9,7 @@ export default function Home() {
           One-of-a-kind, hand-drawn maps crafted just for you <br />
           and delivered as the only copy in the world, straight to your door.
         </h1>
-        <Button size="lg">
+        <Button size="lg" asChild>
           <Link href="/commission">Commission Me</Link>
         </Button>
       </div>
