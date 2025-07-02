@@ -66,10 +66,6 @@ const Navbar1 = ({
       title: "About",
       url: "/about",
     },
-    {
-      title: "Commission Me",
-      url: "/commission",
-    },
   ],
   buttons = [
     { title: "Login", url: "/auth", variant: "outline" },
