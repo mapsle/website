@@ -57,7 +57,7 @@ const Navbar1 = ({
     url: "/",
     src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblockscom-icon.svg",
     alt: "logo",
-    title: "Shadcnblocks.com",
+    title: "mapsle.store",
   },
   menu = [
     { title: "Home", url: "#" },
