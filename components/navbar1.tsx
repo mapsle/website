@@ -17,12 +17,15 @@ import {
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/drawer";
 
 interface MenuItem {
   title: string;
@@ -107,21 +110,24 @@ const Navbar1 = ({
             {/* Logo */}
             <Link href={logo.url} className="flex items-center gap-2">
               <img src={logo.src} className="max-h-8" alt={logo.alt} />
+              <span className="text-lg font-semibold tracking-tighter">
+                {logo.title}
+              </span>
             </Link>
-            <Sheet>
-              <SheetTrigger asChild>
+            <Drawer direction="right">
+              <DrawerTrigger asChild>
                 <Button variant="outline" size="icon">
                   <Menu className="size-4" />
                 </Button>
-              </SheetTrigger>
-              <SheetContent className="overflow-y-auto">
-                <SheetHeader>
-                  <SheetTitle>
-                    <Link href={logo.url} className="flex items-center gap-2">
-                      <img src={logo.src} className="max-h-8" alt={logo.alt} />
-                    </Link>
-                  </SheetTitle>
-                </SheetHeader>
+              </DrawerTrigger>
+              <DrawerContent className="overflow-y-auto">
+                <DrawerHeader>
+                  <DrawerTitle>
+                    <span className="text-lg font-semibold tracking-tighter">
+                      {logo.title}
+                    </span>
+                  </DrawerTitle>
+                </DrawerHeader>
                 <div className="flex flex-col gap-6 p-4">
                   <Accordion
                     type="single"
@@ -144,8 +150,8 @@ const Navbar1 = ({
                       ))}
                   </div>
                 </div>
-              </SheetContent>
-            </Sheet>
+              </DrawerContent>
+            </Drawer>
           </div>
         </div>
       </div>
