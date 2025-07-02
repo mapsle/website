@@ -35,7 +35,7 @@ export default function CommissionPage() {
       </div>
       <div className="w-full flex justify-center items-center bg-neutral-50 p-3">
         {step == 1 && (
-          <div className="p-3 gap-3 flex flex-col border min-w-96 rounded-md">
+          <div className="p-3 gap-3 flex flex-col min-w-96">
             <h2 className="text-xl">Size</h2>
             <div className="flex flex-row w-full gap-3 [&>button]:grow">
               <Button
