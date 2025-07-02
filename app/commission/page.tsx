@@ -12,7 +12,7 @@ export default function CommissionPage() {
   );
   return (
     <div className="absolute top-0 -z-10 w-full h-screen flex md:flex-row flex-col">
-      <div className="w-full h-full flex justify-center items-center bg-gray-50">
+      <div className="w-full h-full flex justify-center items-center ">
         {step == 1 && (
           <div
             className={clsx(
