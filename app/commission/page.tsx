@@ -12,7 +12,7 @@ export default function CommissionPage() {
   );
   return (
     <div className="absolute top-0 -z-10 w-full h-screen flex md:flex-row flex-col">
-      <div className="w-full flex justify-center items-center bg-gray-50">
+      <div className="w-full h-full flex justify-center items-center bg-gray-50">
         {step == 1 && (
           <div
             className={clsx(
@@ -24,7 +24,7 @@ export default function CommissionPage() {
           >
             <span
               className={clsx(
-                "block duration-300 text-neutral-400 text-xl",
+                "block duration-300 text-neutral-400 text-3xl",
                 orientation == "portrait" && "-rotate-90",
               )}
             >
