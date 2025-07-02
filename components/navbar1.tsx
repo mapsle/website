@@ -1,3 +1,5 @@
+"use client";
+
 import { Book, Menu, Sunset, Trees, Zap } from "lucide-react";
 import Link from "next/link";
 
@@ -26,6 +28,7 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
+import { useState } from "react";
 
 interface MenuItem {
   title: string;
@@ -73,6 +76,8 @@ const Navbar1 = ({
     { title: "Commission Me", url: "/commission", variant: "default" },
   ],
 }: Navbar1Props) => {
+  let [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   return (
     <section className="p-4">
       <div className="container mx-auto">
@@ -114,7 +119,11 @@ const Navbar1 = ({
                 {logo.title}
               </span>
             </Link>
-            <Drawer direction="right">
+            <Drawer
+              direction="right"
+              open={mobileMenuOpen}
+              onOpenChange={setMobileMenuOpen}
+            >
               <DrawerTrigger asChild>
                 <Button variant="outline" size="icon">
                   <Menu className="size-4" />
@@ -134,7 +143,11 @@ const Navbar1 = ({
                     collapsible
                     className="flex w-full flex-col gap-4"
                   >
-                    {menu.map((item) => renderMobileMenuItem(item))}
+                    {menu.map((item) =>
+                      renderMobileMenuItem(item, () => {
+                        setMobileMenuOpen(false);
+                      }),
+                    )}
                   </Accordion>
 
                   <div className="flex flex-col gap-3">
@@ -145,7 +158,14 @@ const Navbar1 = ({
                           asChild
                           variant={button.variant}
                         >
-                          <Link href={button.url}>{button.title}</Link>
+                          <Link
+                            href={button.url}
+                            onClick={() => {
+                              setMobileMenuOpen(false);
+                            }}
+                          >
+                            {button.title}
+                          </Link>
                         </Button>
                       ))}
                   </div>
@@ -187,7 +207,7 @@ const renderMenuItem = (item: MenuItem) => {
   );
 };
 
-const renderMobileMenuItem = (item: MenuItem) => {
+const renderMobileMenuItem = (item: MenuItem, onClick: () => void) => {
   if (item.items) {
     return (
       <AccordionItem key={item.title} value={item.title} className="border-b-0">
@@ -204,7 +224,12 @@ const renderMobileMenuItem = (item: MenuItem) => {
   }
 
   return (
-    <Link key={item.title} href={item.url} className="text-md font-semibold">
+    <Link
+      key={item.title}
+      href={item.url}
+      className="text-md font-semibold"
+      onClick={onClick}
+    >
       {item.title}
     </Link>
   );
