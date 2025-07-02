@@ -14,22 +14,24 @@ export default function CommissionPage() {
     <div className="absolute top-0 -z-10 w-full h-screen flex md:flex-row flex-col">
       <div className="w-full h-full flex justify-center items-center p-3">
         {step == 1 && (
-          <div
-            className={clsx(
-              "bg-white rounded-md max-w-full max-h-full duration-300 aspect-[11/8.5] w-96 drop-shadow-2xl flex justify-center items-center",
-              orientation == "portrait" && "rotate-90",
-              size == "a3" && "scale-125",
-              size == "a5" && "scale-75",
-            )}
-          >
-            <span
+          <div className="drop-shadow-2xl">
+            <div
               className={clsx(
-                "block duration-300 text-neutral-400 text-3xl",
-                orientation == "portrait" && "-rotate-90",
+                "bg-white rounded-md max-w-full max-h-full duration-300 aspect-[11/8.5] w-96 flex justify-center items-center",
+                orientation == "portrait" && "rotate-90",
+                size == "a3" && "scale-125",
+                size == "a5" && "scale-75",
               )}
             >
-              Map here
-            </span>
+              <span
+                className={clsx(
+                  "block duration-300 text-neutral-400 text-3xl",
+                  orientation == "portrait" && "-rotate-90",
+                )}
+              >
+                Map here
+              </span>
+            </div>
           </div>
         )}
       </div>
