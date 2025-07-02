@@ -12,7 +12,7 @@ export default function CommissionPage() {
   );
   return (
     <div className="absolute top-0 -z-10 w-full h-screen flex md:flex-row flex-col">
-      <div className="w-full h-full flex justify-center items-center ">
+      <div className="w-full h-full flex justify-center items-center p-3">
         {step == 1 && (
           <div
             className={clsx(
@@ -33,7 +33,7 @@ export default function CommissionPage() {
           </div>
         )}
       </div>
-      <div className="w-full flex justify-center items-center">
+      <div className="w-full flex justify-center items-center bg-neutral-50 p-3">
         {step == 1 && (
           <div className="p-3 gap-3 flex flex-col border min-w-96 rounded-md">
             <h2 className="text-xl">Size</h2>
