@@ -8,8 +8,7 @@ export default function Home() {
       <HeroMap1 className="h-full absolute top-0 left-0 w-fit -z-20" />
       <div className="container mx-auto flex flex-col items-center justify-center h-full gap-5">
         <h1 className="text-4xl text-center">
-          One-of-a-kind, hand-drawn maps crafted just for you <br />
-          and delivered as the only copy in the world, straight to your door.
+          One-of-a-kind, hand-drawn maps crafted just for you
         </h1>
         <Button size="lg" asChild>
           <Link href="/commission">Commission Me</Link>
