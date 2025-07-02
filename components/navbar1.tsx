@@ -40,16 +40,11 @@ interface Navbar1Props {
     title: string;
   };
   menu?: MenuItem[];
-  auth?: {
-    login: {
-      title: string;
-      url: string;
-    };
-    signup: {
-      title: string;
-      url: string;
-    };
-  };
+  buttons?: {
+    title: string;
+    url: string;
+    variant: "default" | "outline";
+  }[];
 }
 
 const Navbar1 = ({
@@ -70,10 +65,10 @@ const Navbar1 = ({
       url: "/commission",
     },
   ],
-  auth = {
-    login: { title: "Login", url: "#" },
-    signup: { title: "Sign up", url: "#" },
-  },
+  buttons = [
+    { title: "Login", url: "#", variant: "outline" },
+    { title: "Sign up", url: "#", variant: "default" },
+  ],
 }: Navbar1Props) => {
   return (
     <section className="py-4">
@@ -97,12 +92,12 @@ const Navbar1 = ({
             </div>
           </div>
           <div className="flex gap-2">
-            <Button asChild variant="outline" size="sm">
-              <Link href={auth.login.url}>{auth.login.title}</Link>
-            </Button>
-            <Button asChild size="sm">
-              <Link href={auth.signup.url}>{auth.signup.title}</Link>
-            </Button>
+            {buttons &&
+              buttons.map((button) => (
+                <Button key={button.title} asChild variant={button.variant}>
+                  <Link href={button.url}>{button.title}</Link>
+                </Button>
+              ))}
           </div>
         </nav>
 
@@ -137,12 +132,16 @@ const Navbar1 = ({
                   </Accordion>
 
                   <div className="flex flex-col gap-3">
-                    <Button asChild variant="outline">
-                      <Link href={auth.login.url}>{auth.login.title}</Link>
-                    </Button>
-                    <Button asChild>
-                      <Link href={auth.signup.url}>{auth.signup.title}</Link>
-                    </Button>
+                    {buttons &&
+                      buttons.map((button) => (
+                        <Button
+                          key={button.title}
+                          asChild
+                          variant={button.variant}
+                        >
+                          <Link href={button.url}>{button.title}</Link>
+                        </Button>
+                      ))}
                   </div>
                 </div>
               </SheetContent>
