@@ -5,7 +5,6 @@ import HeroMap1 from "@/components/hero-map-1";
 export default function Home() {
   return (
     <div className="absolute top-0 h-screen -z-10 w-full">
-      <HeroMap1 className="h-full absolute top-0 left-0 w-fit -z-20" />
       <div className="container mx-auto flex flex-col items-center justify-center h-full gap-5">
         <h1 className="text-4xl text-center">
           One-of-a-kind, hand-drawn maps crafted just for you
