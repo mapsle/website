@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import HeroMap1 from "@/components/hero-map-1";
 
 export default function Home() {
   return (
