@@ -1,5 +1,19 @@
+import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
-  return <div>smasnug</div>;
+  return (
+    <div className="absolute top-0 h-screen -z-10 w-full">
+      <div className="container mx-auto flex flex-col items-center justify-center h-full gap-5">
+        <h1 className="text-4xl text-center">
+          One-of-a-kind, hand-drawn maps crafted just for you <br />
+          and delivered as the only copy in the world, straight to your door.
+        </h1>
+        <Button size="lg">
+          <Link href="/commission">Commission Me</Link>
+        </Button>
+      </div>
+    </div>
+  );
 }
