@@ -11,6 +11,9 @@ export default function CommissionPage() {
   let [orientation, setOrientation] = useState<"portrait" | "landscape">(
     "portrait",
   );
+
+  let [category, setCategory] = useState<"real" | "fictional" | null>();
+
   const width = useMemo(() => {
     if (orientation === "portrait") {
       if (size === "a3") return "297";
@@ -67,10 +70,14 @@ export default function CommissionPage() {
         <AnimatePresence>
           {step == 1 && (
             <motion.div
+              key="1"
               className="p-3 gap-3 flex flex-col min-w-96"
               exit={{ opacity: 0, y: -100 }}
               initial={{ opacity: 0, y: 100 }}
               animate={{ opacity: 1, y: 0 }}
+              transition={{
+                ease: [0, 0.7, 0.2, 1],
+              }}
             >
               <h2 className="text-xl">Size</h2>
               <div className="flex flex-row w-full gap-3 [&>button]:grow">
