@@ -55,8 +55,8 @@ export default function CommissionPage() {
                   "bg-white rounded-md  flex justify-center items-center scale-75 md:scale-100",
                 )}
                 initial={{
-                  width: "210px",
-                  height: "297px",
+                  width: width + "px",
+                  height: height + "px",
                 }}
                 animate={{
                   width: width + "px",
@@ -83,8 +83,8 @@ export default function CommissionPage() {
                   "rounded-md  flex justify-center items-center scale-75 md:scale-100 border border-dashed",
                 )}
                 initial={{
-                  width: "210px",
-                  height: "297px",
+                  width: width + "px",
+                  height: height + "px",
                 }}
                 animate={{
                   width: width + "px",
