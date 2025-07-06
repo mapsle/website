@@ -40,7 +40,7 @@ export default function CommissionPage() {
           <div className="drop-shadow-2xl">
             <motion.div
               className={clsx(
-                "bg-white rounded-md  flex justify-center items-center",
+                "bg-white rounded-md  flex justify-center items-center scale-75 md:scale-100",
               )}
               animate={{
                 width: width + "px",
