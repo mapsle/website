@@ -189,14 +189,24 @@ export default function CommissionPage() {
               <div className="grid grid-cols-2 w-full gap-3">
                 <Button
                   variant={category === "real" ? "default" : "outline"}
-                  onClick={() => setCategory("real")}
+                  onClick={() => {
+                    if (category == null) {
+                      setStep(3);
+                    }
+                    setCategory("real");
+                  }}
                 >
                   <LocateFixed />
                   Real
                 </Button>
                 <Button
                   variant={category === "fictional" ? "default" : "outline"}
-                  onClick={() => setCategory("fictional")}
+                  onClick={() => {
+                    if (category == null) {
+                      setStep(3);
+                    }
+                    setCategory("fictional");
+                  }}
                 >
                   <MountainSnow />
                   Fictional
