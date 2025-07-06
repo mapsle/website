@@ -36,7 +36,9 @@ export default function Map({
   useEffect(() => {
     map?.on("move", (event) => {
       setPosition(map.getCenter());
+      console.log(map.getCenter());
     });
+
     map?.on("zoom", (event) => {
       setZoom(map.getZoom());
     });

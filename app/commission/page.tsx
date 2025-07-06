@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import clsx from "clsx";
-import { useMemo, useState } from "react";
+import { Dispatch, SetStateAction, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import {
   MountainSnow,
@@ -351,7 +351,11 @@ export default function CommissionPage() {
                     }}
                   />
                   <QueryClientProvider client={queryClient}>
-                    <Geocode search={search} />
+                    <Geocode
+                      setPosition={setPosition}
+                      setZoom={setZoom}
+                      search={search}
+                    />
                   </QueryClientProvider>
                 </>
               )}
@@ -381,7 +385,15 @@ export default function CommissionPage() {
   );
 }
 
-function Geocode({ search }: { search: string }) {
+function Geocode({
+  search,
+  setPosition,
+  setZoom,
+}: {
+  search: string;
+  setPosition: Dispatch<SetStateAction<LatLng | undefined>>;
+  setZoom: Dispatch<SetStateAction<number | undefined>>;
+}) {
   const queryClient = new QueryClient();
   const { isPending, error, data, isFetching } = useQuery({
     queryKey: ["geocode", search],
@@ -397,10 +409,22 @@ function Geocode({ search }: { search: string }) {
   if (error) return <p>Error: {error.message}</p>;
 
   return (
-    <div>
+    <div className="grid grid-cols-1 gap-3">
       {data &&
         data.length &&
-        data.map((item: any) => <div key={item.place_id}>{item.name}</div>)}
+        data.map((item: any) => (
+          <Button
+            variant="ghost"
+            className="cursor-pointer"
+            onClick={() => {
+              setZoom(16);
+              setPosition(new LatLng(item.lat, item.lon));
+            }}
+            key={item.place_id}
+          >
+            {item.name}
+          </Button>
+        ))}
     </div>
   );
 }
