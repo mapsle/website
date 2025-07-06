@@ -29,6 +29,11 @@ export default function Map({
   const [map, setMap] = useState<MapType | null>(null);
 
   useEffect(() => {
+    if (position) {
+      map?.setView([position?.lat, position?.lng], zoom);
+    }
+  }, [position, zoom, map]);
+  useEffect(() => {
     map?.on("move", (event) => {
       setPosition(map.getCenter());
     });

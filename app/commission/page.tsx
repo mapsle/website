@@ -148,7 +148,12 @@ export default function CommissionPage() {
                 onAnimationComplete={() => setMapAnimating(false)}
               >
                 {category == "real" && !mapAnimating && (
-                  <Map position={position} setPosition={setPosition} />
+                  <Map
+                    position={position}
+                    setPosition={setPosition}
+                    zoom={zoom}
+                    setZoom={setZoom}
+                  />
                 )}
                 {category == "real" && (
                   <Button
