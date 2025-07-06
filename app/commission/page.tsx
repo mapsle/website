@@ -226,6 +226,7 @@ export default function CommissionPage() {
                 <div className="grow"></div>
                 <Button
                   variant="default"
+                  disabled={category == null}
                   onClick={() => {
                     setStep(3);
                   }}
