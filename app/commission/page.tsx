@@ -345,8 +345,6 @@ export default function CommissionPage() {
             </motion.div>
           )}
         </AnimatePresence>
-        {position && position.lat}
-        {position && position.lng}
       </div>
     </div>
   );
