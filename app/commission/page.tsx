@@ -191,7 +191,7 @@ export default function CommissionPage() {
                   variant={category === "real" ? "default" : "outline"}
                   onClick={() => {
                     if (category == null) {
-                      setStep(3);
+                      setTimeout(() => setStep(3), 200);
                     }
                     setCategory("real");
                   }}
@@ -203,7 +203,7 @@ export default function CommissionPage() {
                   variant={category === "fictional" ? "default" : "outline"}
                   onClick={() => {
                     if (category == null) {
-                      setStep(3);
+                      setTimeout(() => setStep(3), 200);
                     }
                     setCategory("fictional");
                   }}
