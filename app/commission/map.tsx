@@ -49,7 +49,7 @@ export default function Map({
   return (
     <MapContainer
       center={[0, 0]}
-      zoom={13}
+      zoom={1}
       scrollWheelZoom={true}
       className="w-full h-full bg-black overflow-hidden"
       ref={setMap}
