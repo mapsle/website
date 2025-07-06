@@ -4,10 +4,11 @@ import { Button } from "@/components/ui/button";
 import clsx from "clsx";
 import { useMemo, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { MountainSnow, LocateFixed } from "lucide-react";
+import { MountainSnow, LocateFixed, AlertCircleIcon } from "lucide-react";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import dynamic from "next/dynamic";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 const Map = dynamic(() => import("./map"), { ssr: false });
 
@@ -47,6 +48,13 @@ export default function CommissionPage() {
 
   return (
     <div className="absolute top-0 -z-10 w-full h-screen flex md:flex-row flex-col">
+      <Alert variant="destructive" className="mt-20 md:hidden">
+        {" "}
+        <AlertCircleIcon /> <AlertTitle>Notice</AlertTitle>
+        <AlertDescription>
+          This site doesn't work well on mobile devices.
+        </AlertDescription>
+      </Alert>
       <div className="w-full h-full flex justify-center items-center p-3 [&>div]:absolute">
         <AnimatePresence>
           {step == 1 && (
