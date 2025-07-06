@@ -124,18 +124,18 @@ export default function CommissionPage() {
             >
               <motion.div
                 className={clsx(
-                  "rounded-md  flex justify-center items-center scale-75 md:scale-100 border border-dashed overflow-hidden",
+                  "rounded-md bg-neutral-50 flex justify-center items-center scale-75 md:scale-100 border border-dashed overflow-hidden",
                 )}
                 initial={{
-                  width: width + "px",
-                  height: height + "px",
+                  width: orientation == "portrait" ? "297px" : "420px",
+                  height: orientation == "portrait" ? "420px" : "297px",
                 }}
                 animate={{
-                  width: width + "px",
-                  height: height + "px",
+                  width: orientation == "portrait" ? "297px" : "420px",
+                  height: orientation == "portrait" ? "420px" : "297px",
                 }}
               >
-                <Map />
+                {category == "real" && <Map />}
               </motion.div>
             </motion.div>
           )}
