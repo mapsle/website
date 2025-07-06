@@ -40,10 +40,11 @@ export default function CommissionPage() {
 
   return (
     <div className="absolute top-0 -z-10 w-full h-screen flex md:flex-row flex-col">
-      <div className="w-full h-full flex justify-center items-center p-3">
+      <div className="w-full h-full flex justify-center items-center p-3 [&>div]:absolute">
         <AnimatePresence>
           {step == 1 && (
             <motion.div
+              key="1"
               className="drop-shadow-2xl"
               exit={{ opacity: 0 }}
               initial={{ opacity: 0 }}
@@ -68,6 +69,28 @@ export default function CommissionPage() {
                   {width}mm x {height}mm
                 </span>
               </motion.div>
+            </motion.div>
+          )}
+          {step == 2 && (
+            <motion.div
+              key="2"
+              exit={{ opacity: 0 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+            >
+              <motion.div
+                className={clsx(
+                  "rounded-md  flex justify-center items-center scale-75 md:scale-100 border border-dashed",
+                )}
+                initial={{
+                  width: "210px",
+                  height: "297px",
+                }}
+                animate={{
+                  width: width + "px",
+                  height: height + "px",
+                }}
+              ></motion.div>
             </motion.div>
           )}
         </AnimatePresence>
