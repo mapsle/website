@@ -36,6 +36,8 @@ export default function CommissionPage() {
   let [position, setPosition] = useState<LatLng | undefined>();
   let [zoom, setZoom] = useState<number | undefined>();
 
+  let [search, setSearch] = useState<string>("");
+
   const width = useMemo(() => {
     if (orientation === "portrait") {
       if (size === "a3") return "297";
@@ -333,9 +335,17 @@ export default function CommissionPage() {
                 </div>
               ) : (
                 <>
-                  <Input placeholder="Or search" />
+                  <Input
+                    placeholder="Or search"
+                    onKeyPress={(event) => {
+                      if (event.key == "Enter") {
+                        event.preventDefault();
+                        setSearch(event.target.value);
+                      }
+                    }}
+                  />
                   <QueryClientProvider client={queryClient}>
-                    <Geocode search="test" />
+                    <Geocode search={search} />
                   </QueryClientProvider>
                 </>
               )}
@@ -365,12 +375,12 @@ export default function CommissionPage() {
   );
 }
 
-function Geocode(search: string) {
+function Geocode({ search }: { search: string }) {
   const queryClient = new QueryClient();
   const { isPending, error, data, isFetching } = useQuery({
     queryKey: ["geocode", search],
     queryFn: () => {
-      return "e";
+      return search;
     },
   });
 
@@ -378,5 +388,5 @@ function Geocode(search: string) {
 
   if (error) return "Error: " + error.message;
 
-  return data;
+  return <p>data.search</p>;
 }
