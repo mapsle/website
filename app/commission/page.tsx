@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import clsx from "clsx";
-import { useMemo, useState } from "react";
+import { KeyboardEvent, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { MountainSnow, LocateFixed, AlertCircleIcon } from "lucide-react";
 import { Textarea } from "@/components/ui/textarea";
@@ -337,10 +337,10 @@ export default function CommissionPage() {
                 <>
                   <Input
                     placeholder="Or search"
-                    onKeyPress={(event) => {
+                    onKeyDown={(event) => {
                       if (event.key == "Enter") {
                         event.preventDefault();
-                        setSearch(event.target.value);
+                        setSearch((event.target as HTMLInputElement).value);
                       }
                     }}
                   />
