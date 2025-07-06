@@ -4,7 +4,12 @@ import { Button } from "@/components/ui/button";
 import clsx from "clsx";
 import { useMemo, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { MountainSnow, LocateFixed, AlertCircleIcon } from "lucide-react";
+import {
+  MountainSnow,
+  LocateFixed,
+  AlertCircleIcon,
+  LoaderCircle,
+} from "lucide-react";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import dynamic from "next/dynamic";
@@ -384,9 +389,9 @@ function Geocode({ search }: { search: string }) {
     },
   });
 
-  if (isPending) return "Loading";
+  if (isPending) return <LoaderCircle className="w-4 h-4 animate-spin" />;
 
-  if (error) return "Error: " + error.message;
+  if (error) return <p>Error: {error.message}</p>;
 
-  return <p>data.search</p>;
+  return <p>{data}</p>;
 }
