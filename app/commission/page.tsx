@@ -48,12 +48,6 @@ export default function CommissionPage() {
 
   return (
     <div className="absolute top-0 -z-10 w-full h-screen flex md:flex-row flex-col">
-      <Alert variant="destructive" className="mt-20 md:hidden">
-        <AlertCircleIcon /> <AlertTitle>Notice</AlertTitle>
-        <AlertDescription>
-          This site doesn't work well on mobile devices.
-        </AlertDescription>
-      </Alert>
       <div className="w-full h-full flex justify-center items-center p-3 [&>div]:absolute">
         <AnimatePresence>
           {step == 1 && (
@@ -163,7 +157,7 @@ export default function CommissionPage() {
           )}
         </AnimatePresence>
       </div>
-      <div className="w-full flex justify-center items-center md:bg-neutral-50 p-3 [&>div]:absolute h-full">
+      <div className="w-full flex justify-center items-center md:bg-neutral-50 p-3 [&>div]:top-0 relative [&>div]:absolute h-full">
         <AnimatePresence>
           {step == 1 && (
             <motion.div
@@ -176,6 +170,12 @@ export default function CommissionPage() {
                 ease: [0, 0.7, 0.2, 1],
               }}
             >
+              <Alert variant="destructive" className="mt-20 md:hidden">
+                <AlertCircleIcon /> <AlertTitle>Notice</AlertTitle>
+                <AlertDescription>
+                  This site is not built for mobile. Use at your own risk.
+                </AlertDescription>
+              </Alert>
               <h2 className="text-xl">Size</h2>
               <div className="grid grid-cols-3 w-full gap-3">
                 <Button
