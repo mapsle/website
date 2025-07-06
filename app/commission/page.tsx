@@ -170,7 +170,7 @@ export default function CommissionPage() {
                 ease: [0, 0.7, 0.2, 1],
               }}
             >
-              <Alert variant="destructive" className="mt-20 md:hidden">
+              <Alert variant="destructive" className="md:hidden">
                 <AlertCircleIcon /> <AlertTitle>Notice</AlertTitle>
                 <AlertDescription>
                   This site is not built for mobile. Use at your own risk.
