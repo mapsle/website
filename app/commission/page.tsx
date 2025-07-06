@@ -5,6 +5,8 @@ import clsx from "clsx";
 import { useMemo, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { MountainSnow, LocateFixed } from "lucide-react";
+import { Textarea } from "@/components/ui/textarea";
+import { Input } from "@/components/ui/input";
 
 export default function CommissionPage() {
   let [step, setStep] = useState(1);
@@ -229,6 +231,50 @@ export default function CommissionPage() {
                   }}
                 >
                   Next
+                </Button>
+              </div>
+            </motion.div>
+          )}
+          {step == 3 && (
+            <motion.div
+              key="3"
+              className="p-3 gap-3 flex flex-col min-w-96"
+              exit={{ opacity: 0, y: -100 }}
+              initial={{ opacity: 0, y: 100 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                ease: [0, 0.7, 0.2, 1],
+              }}
+            >
+              <h2 className="text-xl">
+                {category === "real"
+                  ? "Select a location on the map"
+                  : "Describe your fictional place"}
+              </h2>
+
+              {category === "fictional" ? (
+                <div className="grid grid-cols-1 w-full gap-3 min-h-32">
+                  <Textarea placeholder="Add as many details as possible"></Textarea>
+                </div>
+              ) : (
+                <Input placeholder="Or search" />
+              )}
+              <h2 className="text-xl">Add any more details</h2>
+              <div className="grid grid-cols-1 w-full gap-3 min-h-32">
+                <Textarea></Textarea>
+              </div>
+              <div className="flex flex-row">
+                <Button
+                  variant="outline"
+                  onClick={() => {
+                    setStep(2);
+                  }}
+                >
+                  Back
+                </Button>
+                <div className="grow"></div>
+                <Button variant="default" onClick={() => {}}>
+                  Continue
                 </Button>
               </div>
             </motion.div>
