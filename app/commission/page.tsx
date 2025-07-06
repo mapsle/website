@@ -398,6 +398,7 @@ function Geocode({
   const { isPending, error, data, isFetching } = useQuery({
     queryKey: ["geocode", search],
     queryFn: async () => {
+      if (!search) return [];
       const response = await fetch(`/api/geocode?q=${search}`);
       const json = await response.json();
       return json;
