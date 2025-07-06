@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import clsx from "clsx";
-import { KeyboardEvent, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { MountainSnow, LocateFixed, AlertCircleIcon } from "lucide-react";
 import { Textarea } from "@/components/ui/textarea";
