@@ -141,17 +141,18 @@ export default function CommissionPage() {
                 onAnimationComplete={() => setMapAnimating(false)}
               >
                 {category == "real" && !mapAnimating && <Map />}
-
-                <Button
-                  className="absolute top-3 right-3 z-[400]"
-                  onClick={() => {
-                    orientation == "landscape"
-                      ? setOrientation("portrait")
-                      : setOrientation("landscape");
-                  }}
-                >
-                  Rotate
-                </Button>
+                {category == "real" && (
+                  <Button
+                    className="absolute top-3 right-3 z-[400]"
+                    onClick={() => {
+                      orientation == "landscape"
+                        ? setOrientation("portrait")
+                        : setOrientation("landscape");
+                    }}
+                  >
+                    Rotate
+                  </Button>
+                )}
               </motion.div>
             </motion.div>
           )}
