@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import clsx from "clsx";
 import { useMemo, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import { MountainSnow, LocateFixed } from "lucide-react";
 
 export default function CommissionPage() {
   let [step, setStep] = useState(1);
@@ -145,12 +146,14 @@ export default function CommissionPage() {
                   variant={category === "real" ? "default" : "outline"}
                   onClick={() => setCategory("real")}
                 >
+                  <LocateFixed />
                   Real
                 </Button>
                 <Button
                   variant={category === "fictional" ? "default" : "outline"}
                   onClick={() => setCategory("fictional")}
                 >
+                  <MountainSnow />
                   Fictional
                 </Button>
               </div>
