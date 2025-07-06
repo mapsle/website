@@ -105,7 +105,7 @@ export default function CommissionPage() {
             >
               <motion.div
                 className={clsx(
-                  "rounded-md  flex justify-center items-center scale-75 md:scale-100 border border-dashed",
+                  "rounded-md bg-neutral-50 flex justify-center items-center scale-75 md:scale-100 border border-dashed",
                 )}
                 initial={{
                   width: width + "px",
