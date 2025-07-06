@@ -52,7 +52,7 @@ export default function CommissionPage() {
             >
               <motion.div
                 className={clsx(
-                  "bg-white rounded-md  flex justify-center items-center scale-75 md:scale-100",
+                  "bg-white rounded-md [&>div]:absolute flex justify-center items-center scale-75 md:scale-100",
                 )}
                 initial={{
                   width: width + "px",
@@ -63,11 +63,28 @@ export default function CommissionPage() {
                   height: height + "px",
                 }}
               >
-                <span
-                  className={clsx("block text-center text-neutral-400 text-xl")}
-                >
-                  {width}mm x {height}mm
-                </span>
+                <AnimatePresence>
+                  <motion.div
+                    key={width + "mm x " + height + "mm"}
+                    exit={{ opacity: 0 }}
+                    initial={{ opacity: 0 }}
+                    animate={{
+                      opacity: 1,
+                      transition: {
+                        delay: 0.3,
+                      },
+                    }}
+                    transition={{
+                      duration: 0.3,
+                    }}
+                    className={clsx(
+                      "text-center text-neutral-400 text-xl flex justify-center items-center",
+                    )}
+                    style={{ width: width + "px", height: height + "px" }}
+                  >
+                    {width}mm x {height}mm
+                  </motion.div>
+                </AnimatePresence>
               </motion.div>
             </motion.div>
           )}
