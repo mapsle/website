@@ -48,7 +48,7 @@ export default function CommissionPage() {
 
   return (
     <div className="absolute top-0 -z-10 w-full h-screen flex md:flex-row flex-col">
-      <div className="w-full h-full flex justify-center items-center p-3 [&>div]:absolute">
+      <div className="w-full h-full flex justify-center items-center pt-40 pb-20 md:pt-0 md:pb-0 [&>div]:absolute">
         <AnimatePresence>
           {step == 1 && (
             <motion.div
@@ -157,7 +157,7 @@ export default function CommissionPage() {
           )}
         </AnimatePresence>
       </div>
-      <div className="w-full flex justify-center items-center bg-neutral-100 p-3 [&>div]:top-0 relative [&>div]:absolute h-full">
+      <div className="w-full flex justify-center items-center bg-neutral-100 p-3 [&>div]:top-0 md:[&>div]:top-auto relative [&>div]:absolute h-full">
         <AnimatePresence>
           {step == 1 && (
             <motion.div
