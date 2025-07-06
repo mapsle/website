@@ -81,7 +81,7 @@ export default function CommissionPage() {
               }}
             >
               <h2 className="text-xl">Size</h2>
-              <div className="flex flex-row w-full gap-3 [&>button]:grow">
+              <div className="grid grid-cols-3 w-full gap-3">
                 <Button
                   variant={size === "a3" ? "default" : "outline"}
                   onClick={() => setSize("a3")}
@@ -102,7 +102,7 @@ export default function CommissionPage() {
                 </Button>
               </div>
               <h2 className="text-xl">Orientation</h2>
-              <div className="flex flex-row w-full gap-3 [&>button]:grow">
+              <div className="grid grid-cols-2 w-full gap-3">
                 <Button
                   variant={orientation === "portrait" ? "default" : "outline"}
                   onClick={() => setOrientation("portrait")}
@@ -141,7 +141,7 @@ export default function CommissionPage() {
               }}
             >
               <h2 className="text-xl">Real or fictional place</h2>
-              <div className="flex flex-row w-full gap-3 [&>button]:grow">
+              <div className="grid grid-cols-2 w-full gap-3">
                 <Button
                   variant={category === "real" ? "default" : "outline"}
                   onClick={() => setCategory("real")}
