@@ -129,6 +129,10 @@ export default function CommissionPage() {
                 className={clsx(
                   "rounded-md bg-neutral-50 flex justify-center items-center scale-75 md:scale-100 border border-dashed overflow-hidden",
                 )}
+                exit={{
+                  width: width + "px",
+                  height: height + "px",
+                }}
                 initial={{
                   width: width + "px",
                   height: height + "px",
