@@ -23,6 +23,7 @@ import {
   QueryClient,
   QueryClientProvider,
 } from "@tanstack/react-query";
+import { div } from "motion/react-m";
 
 const Map = dynamic(() => import("./map"), { ssr: false });
 
@@ -384,8 +385,10 @@ function Geocode({ search }: { search: string }) {
   const queryClient = new QueryClient();
   const { isPending, error, data, isFetching } = useQuery({
     queryKey: ["geocode", search],
-    queryFn: () => {
-      return search;
+    queryFn: async () => {
+      const response = await fetch(`/api/geocode?q=${search}`);
+      const json = await response.json();
+      return json;
     },
   });
 
@@ -393,5 +396,11 @@ function Geocode({ search }: { search: string }) {
 
   if (error) return <p>Error: {error.message}</p>;
 
-  return <p>{data}</p>;
+  return (
+    <div>
+      {data &&
+        data.length &&
+        data.map((item: any) => <div key={item.place_id}>{item.name}</div>)}
+    </div>
+  );
 }
