@@ -11,6 +11,14 @@ import dynamic from "next/dynamic";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { LatLng } from "leaflet";
 
+import {
+  useQuery,
+  useMutation,
+  useQueryClient,
+  QueryClient,
+  QueryClientProvider,
+} from "@tanstack/react-query";
+
 const Map = dynamic(() => import("./map"), { ssr: false });
 
 export default function CommissionPage() {
@@ -19,6 +27,8 @@ export default function CommissionPage() {
   let [orientation, setOrientation] = useState<"portrait" | "landscape">(
     "portrait",
   );
+
+  const queryClient = new QueryClient();
 
   let [category, setCategory] = useState<"real" | "fictional" | null>();
 
@@ -322,7 +332,12 @@ export default function CommissionPage() {
                   <Textarea placeholder="Add as many details as possible"></Textarea>
                 </div>
               ) : (
-                <Input placeholder="Or search" />
+                <>
+                  <Input placeholder="Or search" />
+                  <QueryClientProvider client={queryClient}>
+                    <Geocode search="test" />
+                  </QueryClientProvider>
+                </>
               )}
               <h2 className="text-xl">Add any more details</h2>
               <div className="grid grid-cols-1 w-full gap-3 min-h-32">
@@ -348,4 +363,20 @@ export default function CommissionPage() {
       </div>
     </div>
   );
+}
+
+function Geocode(search: string) {
+  const queryClient = new QueryClient();
+  const { isPending, error, data, isFetching } = useQuery({
+    queryKey: ["geocode", search],
+    queryFn: () => {
+      return "e";
+    },
+  });
+
+  if (isPending) return "Loading";
+
+  if (error) return "Error: " + error.message;
+
+  return data;
 }
