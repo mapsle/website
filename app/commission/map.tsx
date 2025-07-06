@@ -18,19 +18,26 @@ import { LatLng, Map as MapType } from "leaflet";
 export default function Map({
   position,
   setPosition,
+  zoom,
+  setZoom,
 }: {
   position: LatLng | undefined;
   setPosition: Dispatch<SetStateAction<LatLng | undefined>>;
+  zoom: number | undefined;
+  setZoom: Dispatch<SetStateAction<number | undefined>>;
 }) {
   const [map, setMap] = useState<MapType | null>(null);
 
   useEffect(() => {
     map?.on("move", (event) => {
-      console.log(map.getCenter());
       setPosition(map.getCenter());
+    });
+    map?.on("zoom", (event) => {
+      setZoom(map.getZoom());
     });
     return () => {
       map?.off("move");
+      map?.off("zoom");
     };
   }, [map]);
 

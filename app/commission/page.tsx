@@ -24,6 +24,7 @@ export default function CommissionPage() {
 
   let [mapAnimating, setMapAnimating] = useState(false);
   let [position, setPosition] = useState<LatLng | undefined>();
+  let [zoom, setZoom] = useState<number | undefined>();
 
   const width = useMemo(() => {
     if (orientation === "portrait") {
