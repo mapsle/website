@@ -9,6 +9,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import dynamic from "next/dynamic";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { LatLng } from "leaflet";
 
 const Map = dynamic(() => import("./map"), { ssr: false });
 
@@ -22,7 +23,7 @@ export default function CommissionPage() {
   let [category, setCategory] = useState<"real" | "fictional" | null>();
 
   let [mapAnimating, setMapAnimating] = useState(false);
-  let [position, setPosition] = useState({ lat: 51.505, lng: -0.09 });
+  let [position, setPosition] = useState<LatLng | undefined>();
 
   const width = useMemo(() => {
     if (orientation === "portrait") {
@@ -338,6 +339,8 @@ export default function CommissionPage() {
             </motion.div>
           )}
         </AnimatePresence>
+        {position && position.lat}
+        {position && position.lng}
       </div>
     </div>
   );
