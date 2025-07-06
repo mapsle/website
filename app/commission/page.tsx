@@ -20,6 +20,8 @@ export default function CommissionPage() {
 
   let [category, setCategory] = useState<"real" | "fictional" | null>();
 
+  let [mapAnimating, setMapAnimating] = useState(false);
+
   const width = useMemo(() => {
     if (orientation === "portrait") {
       if (size === "a3") return "297";
@@ -127,15 +129,28 @@ export default function CommissionPage() {
                   "rounded-md bg-neutral-50 flex justify-center items-center scale-75 md:scale-100 border border-dashed overflow-hidden",
                 )}
                 initial={{
-                  width: orientation == "portrait" ? "297px" : "420px",
-                  height: orientation == "portrait" ? "420px" : "297px",
+                  width: width + "px",
+                  height: height + "px",
                 }}
                 animate={{
                   width: orientation == "portrait" ? "297px" : "420px",
                   height: orientation == "portrait" ? "420px" : "297px",
                 }}
+                onAnimationStart={() => setMapAnimating(true)}
+                onAnimationComplete={() => setMapAnimating(false)}
               >
-                {category == "real" && <Map />}
+                {category == "real" && !mapAnimating && <Map />}
+
+                <Button
+                  className="absolute top-3 right-3 z-[400]"
+                  onClick={() => {
+                    orientation == "landscape"
+                      ? setOrientation("portrait")
+                      : setOrientation("landscape");
+                  }}
+                >
+                  Rotate
+                </Button>
               </motion.div>
             </motion.div>
           )}
