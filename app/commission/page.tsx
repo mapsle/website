@@ -7,6 +7,9 @@ import { motion, AnimatePresence } from "motion/react";
 import { MountainSnow, LocateFixed } from "lucide-react";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
+import dynamic from "next/dynamic";
+
+const Map = dynamic(() => import("./map"), { ssr: false });
 
 export default function CommissionPage() {
   let [step, setStep] = useState(1);
@@ -110,6 +113,30 @@ export default function CommissionPage() {
                   height: height + "px",
                 }}
               ></motion.div>
+            </motion.div>
+          )}
+          {step == 3 && (
+            <motion.div
+              key="3"
+              exit={{ opacity: 0 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+            >
+              <motion.div
+                className={clsx(
+                  "rounded-md  flex justify-center items-center scale-75 md:scale-100 border border-dashed overflow-hidden",
+                )}
+                initial={{
+                  width: width + "px",
+                  height: height + "px",
+                }}
+                animate={{
+                  width: width + "px",
+                  height: height + "px",
+                }}
+              >
+                <Map />
+              </motion.div>
             </motion.div>
           )}
         </AnimatePresence>
