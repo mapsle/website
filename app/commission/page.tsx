@@ -2,7 +2,8 @@
 
 import { Button } from "@/components/ui/button";
 import clsx from "clsx";
-import { useState } from "react";
+import { useMemo, useState } from "react";
+import { motion } from "motion/react";
 
 export default function CommissionPage() {
   let [step, setStep] = useState(1);
@@ -10,28 +11,48 @@ export default function CommissionPage() {
   let [orientation, setOrientation] = useState<"portrait" | "landscape">(
     "portrait",
   );
+  const width = useMemo(() => {
+    if (orientation === "portrait") {
+      if (size === "a3") return "297";
+      if (size === "a4") return "210";
+      if (size === "a5") return "148";
+    } else {
+      if (size === "a3") return "420";
+      if (size === "a4") return "297";
+      if (size === "a5") return "210";
+    }
+  }, [orientation, size]);
+  const height = useMemo(() => {
+    if (orientation === "portrait") {
+      if (size === "a3") return "420";
+      if (size === "a4") return "297";
+      if (size === "a5") return "210";
+    } else {
+      if (size === "a3") return "297";
+      if (size === "a4") return "210";
+      if (size === "a5") return "148";
+    }
+  }, [orientation, size]);
   return (
     <div className="absolute top-0 -z-10 w-full h-screen flex md:flex-row flex-col">
       <div className="w-full h-full flex justify-center items-center p-3">
         {step == 1 && (
           <div className="drop-shadow-2xl">
-            <div
+            <motion.div
               className={clsx(
-                "bg-white rounded-md max-w-full max-h-full duration-300 aspect-[11/8.5] w-96 flex justify-center items-center",
-                orientation == "portrait" && "rotate-90",
-                size == "a3" && "scale-125",
-                size == "a5" && "scale-75",
+                "bg-white rounded-md  flex justify-center items-center",
               )}
+              animate={{
+                width: width + "px",
+                height: height + "px",
+              }}
             >
               <span
-                className={clsx(
-                  "block duration-300 text-neutral-400 text-3xl",
-                  orientation == "portrait" && "-rotate-90",
-                )}
+                className={clsx("block text-center text-neutral-400 text-xl")}
               >
-                Map here
+                {width}mm x {height}mm
               </span>
-            </div>
+            </motion.div>
           </div>
         )}
       </div>
