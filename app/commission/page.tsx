@@ -49,7 +49,6 @@ export default function CommissionPage() {
   return (
     <div className="absolute top-0 -z-10 w-full h-screen flex md:flex-row flex-col">
       <Alert variant="destructive" className="mt-20 md:hidden">
-        {" "}
         <AlertCircleIcon /> <AlertTitle>Notice</AlertTitle>
         <AlertDescription>
           This site doesn't work well on mobile devices.
