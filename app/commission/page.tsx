@@ -128,6 +128,45 @@ export default function CommissionPage() {
               </div>
             </motion.div>
           )}
+          {step == 2 && (
+            <motion.div
+              key="2"
+              className="p-3 gap-3 flex flex-col min-w-96"
+              exit={{ opacity: 0, y: -100 }}
+              initial={{ opacity: 0, y: 100 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                ease: [0, 0.7, 0.2, 1],
+              }}
+            >
+              <h2 className="text-xl">Real or Fictional</h2>
+              <div className="flex flex-row w-full gap-3 [&>button]:grow">
+                <Button
+                  variant={category === "real" ? "default" : "outline"}
+                  onClick={() => setCategory("real")}
+                >
+                  Real
+                </Button>
+                <Button
+                  variant={category === "fictional" ? "default" : "outline"}
+                  onClick={() => setCategory("fictional")}
+                >
+                  Fictional
+                </Button>
+              </div>
+              <div className="flex flex-row">
+                <div className="grow"></div>
+                <Button
+                  variant="default"
+                  onClick={() => {
+                    setStep(2);
+                  }}
+                >
+                  Next
+                </Button>
+              </div>
+            </motion.div>
+          )}
         </AnimatePresence>
       </div>
     </div>
