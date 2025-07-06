@@ -158,11 +158,19 @@ export default function CommissionPage() {
                 </Button>
               </div>
               <div className="flex flex-row">
+                <Button
+                  variant="outline"
+                  onClick={() => {
+                    setStep(1);
+                  }}
+                >
+                  Back
+                </Button>
                 <div className="grow"></div>
                 <Button
                   variant="default"
                   onClick={() => {
-                    setStep(2);
+                    setStep(3);
                   }}
                 >
                   Next
