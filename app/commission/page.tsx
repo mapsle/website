@@ -39,12 +39,7 @@ export default function CommissionPage() {
       <div className="w-full h-full flex justify-center items-center p-3">
         <AnimatePresence>
           {step == 1 && (
-            <motion.div
-              className="drop-shadow-2xl"
-              exit={{ opacity: 0, y: -100 }}
-              initial={{ opacity: 0, y: 100 }}
-              animate={{ opacity: 1, y: 0 }}
-            >
+            <motion.div className="drop-shadow-2xl" exit={{ opacity: 0 }}>
               <motion.div
                 className={clsx(
                   "bg-white rounded-md  flex justify-center items-center scale-75 md:scale-100",
