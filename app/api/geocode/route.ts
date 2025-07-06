@@ -12,6 +12,5 @@ export async function GET(request: NextRequest) {
     return Response.json({ error: "Missing query parameter" });
   }
   const result = await client.search({ q: query });
-  console.log(result);
   return Response.json(result);
 }
