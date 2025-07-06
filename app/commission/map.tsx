@@ -1,7 +1,22 @@
 import { MapContainer, TileLayer, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
+import { Dispatch, SetStateAction } from "react";
 
-export default function Map() {
+export default function Map({
+  position,
+  setPosition,
+}: {
+  position: {
+    lat: number;
+    lng: number;
+  };
+  setPosition: Dispatch<
+    SetStateAction<{
+      lat: number;
+      lng: number;
+    }>
+  >;
+}) {
   return (
     <MapContainer
       center={[51.505, -0.09]}

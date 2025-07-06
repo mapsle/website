@@ -22,6 +22,7 @@ export default function CommissionPage() {
   let [category, setCategory] = useState<"real" | "fictional" | null>();
 
   let [mapAnimating, setMapAnimating] = useState(false);
+  let [position, setPosition] = useState({ lat: 51.505, lng: -0.09 });
 
   const width = useMemo(() => {
     if (orientation === "portrait") {
@@ -144,7 +145,9 @@ export default function CommissionPage() {
                 onAnimationStart={() => setMapAnimating(true)}
                 onAnimationComplete={() => setMapAnimating(false)}
               >
-                {category == "real" && !mapAnimating && <Map />}
+                {category == "real" && !mapAnimating && (
+                  <Map position={position} setPosition={setPosition} />
+                )}
                 {category == "real" && (
                   <Button
                     className="absolute top-3 right-3 z-[400]"
