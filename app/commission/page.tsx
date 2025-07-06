@@ -96,6 +96,17 @@ export default function CommissionPage() {
                 Landscape
               </Button>
             </div>
+            <div className="flex flex-row">
+              <div className="grow"></div>
+              <Button
+                variant="default"
+                onClick={() => {
+                  setStep(2);
+                }}
+              >
+                Next
+              </Button>
+            </div>
           </div>
         )}
       </div>
