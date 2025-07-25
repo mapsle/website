@@ -272,18 +272,6 @@ export default function CommissionPage() {
               <h2 className="text-xl">Real or fictional place</h2>
               <div className="grid grid-cols-2 w-full gap-3">
                 <Button
-                  variant={category === "real" ? "default" : "outline"}
-                  onClick={() => {
-                    if (category == null) {
-                      setTimeout(() => setStep(3), 200);
-                    }
-                    setCategory("real");
-                  }}
-                >
-                  <LocateFixed />
-                  Real
-                </Button>
-                <Button
                   variant={category === "fictional" ? "default" : "outline"}
                   onClick={() => {
                     if (category == null) {
@@ -294,6 +282,18 @@ export default function CommissionPage() {
                 >
                   <MountainSnow />
                   Fictional
+                </Button>
+                <Button
+                  variant={category === "real" ? "default" : "outline"}
+                  onClick={() => {
+                    if (category == null) {
+                      setTimeout(() => setStep(3), 200);
+                    }
+                    setCategory("real");
+                  }}
+                >
+                  <LocateFixed />
+                  Real
                 </Button>
               </div>
               <div className="flex flex-row">
