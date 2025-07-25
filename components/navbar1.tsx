@@ -66,7 +66,6 @@ const Navbar1 = ({
     },
   ],
   buttons = [
-    { title: "Login", url: "/auth", variant: "outline" },
     { title: "Commission Me", url: "/commission", variant: "default" },
   ],
 }: Navbar1Props) => {
