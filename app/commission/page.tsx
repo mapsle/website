@@ -182,7 +182,7 @@ export default function CommissionPage() {
                         : setOrientation("landscape");
                     }}
                   >
-                    Rotate
+                    Change orientation
                   </Button>
                 )}
               </motion.div>
