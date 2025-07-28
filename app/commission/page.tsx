@@ -336,9 +336,104 @@ export default function CommissionPage() {
               </h2>
 
               {category === "fictional" ? (
-                <div className="grid grid-cols-1 w-full gap-3 min-h-32">
-                  <Textarea placeholder="Add as many details as possible"></Textarea>
-                </div>
+                <>
+                  <div className="prose">
+                    <p>
+                      Since you chose a fictional map, here’s your space to
+                      describe anything specific you’d like me to include. You
+                      can be as detailed or vague as you like. The more you give
+                      me, the more personal the map becomes.
+                    </p>
+                    <p>Some things you could include:</p>
+                    <ul>
+                      <li>
+                        <p>
+                          <strong>Specific names</strong> (streets, suburbs,
+                          rivers, etc)
+                        </p>
+                      </li>
+                      <li>
+                        <p>
+                          <strong>Landmarks</strong> (bridge, clock tower, giant
+                          fork, etc)
+                        </p>
+                      </li>
+                      <li>
+                        <p>
+                          <strong>Terrain &amp; geography</strong> (Mountains,
+                          rivers, lakes, beaches, waterfalls, ocean, islands,
+                          etc)
+                        </p>
+                      </li>
+                      <li>
+                        <p>
+                          <strong>Road layout</strong> - You can give me a
+                          specific city to incorporate its layout, or tell me
+                          what style you’d like. For example, a:
+                        </p>
+                        <ul>
+                          <li>Grid (New York, Melbourne) </li>
+                          <li>Radial or planned design (Canberra, Brasilia)</li>
+                          <li>Organic/terrain influenced design (Europe) </li>
+                          <li>Loopy suburban layout </li>
+                          <li>etc</li>
+                        </ul>
+                      </li>
+                      <li>
+                        <p>
+                          <strong>Public infrastructure:</strong>
+                        </p>
+                        <ul>
+                          <li>
+                            Transport (Airport, train line, port, tram, etc)
+                          </li>
+                          <li>Highways (interchanges and tunnels) </li>
+                          <li>
+                            Utilities/services (Substations, reservoirs,
+                            landfill, etc),
+                          </li>
+                          <li>
+                            Buildings (Court house, library, post office, etc
+                          </li>
+                          <li>
+                            Amenities (Schools, Universities, Markets, Shopping
+                            centres, Hospitals, Pools, etc)
+                          </li>
+                          <li>
+                            Green Spaces (Park, Botanic Gardens, Oval/stadium,
+                            Golf courses, wetlands, national parks, etc)
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        <strong>Specific themed areas</strong> (Historic
+                        district, touristy area, industrial area, etc)
+                      </li>
+                      <li>
+                        <strong>Special/unique features</strong> (Abandoned
+                        theme park, lemonade factory, peanut shaped roundabout,
+                        etc)
+                      </li>
+                      <li>
+                        <strong>Personal touches</strong> (Statue of your pet,
+                        personal names, etc)
+                      </li>
+                    </ul>
+                    <p>
+                      Don’t worry if you’re not sure what to write, even one
+                      sentence helps me get a feel for what you want. Or you
+                      could just say surprise me and I’ll draw something cool.
+                    </p>
+                    <p>
+                      If you wish to send any images, say so in the text box,
+                      and I will email you about them once you have completed
+                      your order.
+                    </p>
+                  </div>
+                  <div className="grid grid-cols-1 w-full gap-3 min-h-32">
+                    <Textarea placeholder="Add as many details as possible"></Textarea>
+                  </div>
+                </>
               ) : (
                 <>
                   <Input
