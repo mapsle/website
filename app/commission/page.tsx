@@ -359,10 +359,14 @@ export default function CommissionPage() {
                   </QueryClientProvider>
                 </>
               )}
-              <h2 className="text-xl">Add any more details</h2>
-              <div className="grid grid-cols-1 w-full gap-3 min-h-32">
-                <Textarea></Textarea>
-              </div>
+              {category == "real" && (
+                <>
+                  <h2 className="text-xl">Add any more details</h2>
+                  <div className="grid grid-cols-1 w-full gap-3 min-h-32">
+                    <Textarea></Textarea>
+                  </div>
+                </>
+              )}
               <div className="flex flex-row">
                 <Button
                   variant="outline"
@@ -412,7 +416,7 @@ function Geocode({
   return (
     <div className="grid grid-cols-1 gap-3">
       {data &&
-        data.length &&
+        data.length !== 0 &&
         data.map((item: any) => (
           <Button
             variant="ghost"
