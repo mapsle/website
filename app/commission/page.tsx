@@ -362,6 +362,37 @@ export default function CommissionPage() {
               {category == "real" && (
                 <>
                   <h2 className="text-xl">Add any more details</h2>
+                  <div className="prose overflow-x-auto">
+                    <p>
+                      Since you chose me to draw a real place, here’s your space
+                      to describe anything specific you’d like me to include.
+                      You can be as detailed or vague as you like. The more you
+                      give me, the more personal the map becomes. There isn’t as
+                      much you can customise when compared to a fictional map,
+                      but here are some things you could ask me to incorporate:
+                    </p>
+                    <ul>
+                      <li>
+                        Specific buildings or locations you want highlighted
+                        (Your house, favourite cafe, work, etc)
+                      </li>
+                      <li>Anything you’d like excluded</li>
+                      <li>
+                        Custom naming (rename a street, suburb, building, etc)
+                      </li>
+                    </ul>
+                    <p>
+                      Don’t worry if you’re not sure what to write, even one
+                      sentence helps me get a feel for what you want. Or you
+                      could just say surprise me and I’ll draw the location you
+                      pinpointed.
+                    </p>
+                    <p>
+                      If you wish to send any images, say so in the text box,
+                      and I will email you about them once you have completed
+                      your order.
+                    </p>
+                  </div>
                   <div className="grid grid-cols-1 w-full gap-3 min-h-32">
                     <Textarea></Textarea>
                   </div>
