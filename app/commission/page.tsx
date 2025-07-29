@@ -190,7 +190,7 @@ export default function CommissionPage() {
           )}
         </AnimatePresence>
       </div>
-      <div className="w-full flex justify-center items-center bg-neutral-100 p-3 [&>div]:top-0 md:[&>div]:top-auto relative [&>div]:absolute h-full">
+      <div className="w-full flex  bg-neutral-100 p-3 [&>div]:top-0 md:[&>div]:top-auto relative [&>div]:absolute h-full overflow-auto justify-center pt-30">
         <AnimatePresence>
           {step == 1 && (
             <motion.div
