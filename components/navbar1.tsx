@@ -56,7 +56,7 @@ const Navbar1 = ({
   logo = {
     url: "/",
     alt: "logo",
-    title: "mapsle.store",
+    title: "mapsle",
   },
   menu = [
     { title: "Home", url: "/" },
