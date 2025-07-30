@@ -269,7 +269,7 @@ export default function CommissionPage() {
                 ease: [0, 0.7, 0.2, 1],
               }}
             >
-              <h2 className="text-xl">Real or fictional place</h2>
+              <h2 className="text-xl">Fictional or real place</h2>
               <div className="grid grid-cols-2 w-full gap-3">
                 <Button
                   variant={category === "fictional" ? "default" : "outline"}
