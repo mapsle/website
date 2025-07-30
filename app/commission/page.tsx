@@ -209,7 +209,7 @@ export default function CommissionPage() {
                   This site is not built for mobile. Use at your own risk.
                 </AlertDescription>
               </Alert>
-              <h2 className="text-xl">Size</h2>
+              <h2 className="text-xl">1. Size</h2>
               <div className="grid grid-cols-3 w-full gap-3">
                 <Button
                   variant={size === "a3" ? "default" : "outline"}
@@ -230,7 +230,7 @@ export default function CommissionPage() {
                   A5
                 </Button>
               </div>
-              <h2 className="text-xl">Orientation</h2>
+              <h2 className="text-xl">2. Orientation</h2>
               <div className="grid grid-cols-2 w-full gap-3">
                 <Button
                   variant={orientation === "portrait" ? "default" : "outline"}
@@ -269,7 +269,7 @@ export default function CommissionPage() {
                 ease: [0, 0.7, 0.2, 1],
               }}
             >
-              <h2 className="text-xl">Fictional or real place</h2>
+              <h2 className="text-xl">3. Fictional or real place</h2>
               <div className="grid grid-cols-2 w-full gap-3">
                 <Button
                   variant={category === "fictional" ? "default" : "outline"}
@@ -331,8 +331,8 @@ export default function CommissionPage() {
             >
               <h2 className="text-xl">
                 {category === "real"
-                  ? "Select a location on the map"
-                  : "Describe your fictional place"}
+                  ? "4. Select a location on the map"
+                  : "4. Describe your fictional place"}
               </h2>
 
               {category === "fictional" ? (
