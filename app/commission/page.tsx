@@ -14,7 +14,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import dynamic from "next/dynamic";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { LatLng } from "leaflet";
+import type { LatLng } from "leaflet";
 
 import {
   useQuery,
@@ -26,6 +26,9 @@ import {
 import { div } from "motion/react-m";
 
 const Map = dynamic(() => import("./map"), { ssr: false });
+const LatLngHandler = dynamic(() => import("@/components/LatLngHandler"), {
+  ssr: false,
+});
 
 export default function CommissionPage() {
   let [step, setStep] = useState(1);
@@ -446,9 +449,9 @@ export default function CommissionPage() {
                     }}
                   />
                   <QueryClientProvider client={queryClient}>
-                    <Geocode
-                      setPosition={setPosition}
-                      setZoom={setZoom}
+                    <LatLngHandler
+                      onPositionChange={setPosition}
+                      onZoomChange={setZoom}
                       search={search}
                     />
                   </QueryClientProvider>
@@ -515,47 +518,4 @@ export default function CommissionPage() {
   );
 }
 
-function Geocode({
-  search,
-  setPosition,
-  setZoom,
-}: {
-  search: string;
-  setPosition: Dispatch<SetStateAction<LatLng | undefined>>;
-  setZoom: Dispatch<SetStateAction<number | undefined>>;
-}) {
-  const queryClient = new QueryClient();
-  const { isPending, error, data, isFetching } = useQuery({
-    queryKey: ["geocode", search],
-    queryFn: async () => {
-      if (!search) return [];
-      const response = await fetch(`/api/geocode?q=${search}`);
-      const json = await response.json();
-      return json;
-    },
-  });
-
-  if (isPending) return <LoaderCircle className="w-4 h-4 animate-spin" />;
-
-  if (error) return <p>Error: {error.message}</p>;
-
-  return (
-    <div className="grid grid-cols-1 gap-3">
-      {data &&
-        data.length !== 0 &&
-        data.map((item: any) => (
-          <Button
-            variant="ghost"
-            className="cursor-pointer"
-            onClick={() => {
-              setZoom(16);
-              setPosition(new LatLng(item.lat, item.lon));
-            }}
-            key={item.place_id}
-          >
-            {item.name}
-          </Button>
-        ))}
-    </div>
-  );
-}
+// Moved to client component in @/components/LatLngHandler.tsx
