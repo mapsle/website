@@ -1,6 +1,6 @@
 "use client";
 
-import { Book, Menu, Sunset, Trees, Zap } from "lucide-react";
+import { Menu } from "lucide-react";
 import Link from "next/link";
 
 import {
@@ -20,10 +20,7 @@ import {
 } from "@/components/ui/navigation-menu";
 import {
   Drawer,
-  DrawerClose,
   DrawerContent,
-  DrawerDescription,
-  DrawerFooter,
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
@@ -69,7 +66,7 @@ const Navbar1 = ({
     { title: "Commission Me", url: "/commission", variant: "default" },
   ],
 }: Navbar1Props) => {
-  let [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
     <section className="p-4 from-white to-transparent bg-gradient-to-b">

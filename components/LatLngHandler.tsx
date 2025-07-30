@@ -1,10 +1,9 @@
 "use client";
 
-import { Dispatch, SetStateAction, useState } from "react";
 import { LatLng } from "leaflet";
 import { Button } from "@/components/ui/button";
 import { LoaderCircle } from "lucide-react";
-import { useQuery, QueryClient } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 
 type LatLngHandlerProps = {
   search: string;
@@ -12,19 +11,25 @@ type LatLngHandlerProps = {
   onZoomChange: (zoom: number | undefined) => void;
 };
 
+type GeocodeItem = {
+  place_id: string;
+  name: string;
+  lat: number;
+  lon: number;
+};
+
 export function Geocode({
   search,
   onPositionChange,
   onZoomChange,
 }: LatLngHandlerProps) {
-  const queryClient = new QueryClient();
-  const { isPending, error, data, isFetching } = useQuery({
+  const { isPending, error, data } = useQuery({
     queryKey: ["geocode", search],
     queryFn: async () => {
       if (!search) return [];
       const response = await fetch(`/api/geocode?q=${search}`);
       const json = await response.json();
-      return json;
+      return json as GeocodeItem[];
     },
   });
 
@@ -36,7 +41,7 @@ export function Geocode({
     <div className="grid grid-cols-1 gap-3">
       {data &&
         data.length !== 0 &&
-        data.map((item: any) => (
+        data.map((item: GeocodeItem) => (
           <Button
             variant="ghost"
             className="cursor-pointer"

@@ -2,13 +2,12 @@
 
 import { Button } from "@/components/ui/button";
 import clsx from "clsx";
-import { Dispatch, SetStateAction, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import {
   MountainSnow,
   LocateFixed,
   AlertCircleIcon,
-  LoaderCircle,
 } from "lucide-react";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
@@ -17,13 +16,9 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import type { LatLng } from "leaflet";
 
 import {
-  useQuery,
-  useMutation,
-  useQueryClient,
   QueryClient,
   QueryClientProvider,
 } from "@tanstack/react-query";
-import { div } from "motion/react-m";
 
 const Map = dynamic(() => import("./map"), { ssr: false });
 const LatLngHandler = dynamic(() => import("@/components/LatLngHandler"), {
@@ -31,21 +26,21 @@ const LatLngHandler = dynamic(() => import("@/components/LatLngHandler"), {
 });
 
 export default function CommissionPage() {
-  let [step, setStep] = useState(1);
-  let [size, setSize] = useState<"a3" | "a4" | "a5">("a4");
-  let [orientation, setOrientation] = useState<"portrait" | "landscape">(
+  const [step, setStep] = useState(1);
+  const [size, setSize] = useState<"a3" | "a4" | "a5">("a4");
+  const [orientation, setOrientation] = useState<"portrait" | "landscape">(
     "portrait",
   );
 
   const queryClient = new QueryClient();
 
-  let [category, setCategory] = useState<"real" | "fictional" | null>();
+  const [category, setCategory] = useState<"real" | "fictional" | null>();
 
-  let [mapAnimating, setMapAnimating] = useState(false);
-  let [position, setPosition] = useState<LatLng | undefined>();
-  let [zoom, setZoom] = useState<number | undefined>();
+  const [mapAnimating, setMapAnimating] = useState(false);
+  const [position, setPosition] = useState<LatLng | undefined>();
+  const [zoom, setZoom] = useState<number | undefined>();
 
-  let [search, setSearch] = useState<string>("");
+  const [search, setSearch] = useState<string>("");
 
   const width = useMemo(() => {
     if (orientation === "portrait") {
@@ -180,9 +175,7 @@ export default function CommissionPage() {
                   <Button
                     className="absolute top-3 right-3 z-[400]"
                     onClick={() => {
-                      orientation == "landscape"
-                        ? setOrientation("portrait")
-                        : setOrientation("landscape");
+                      setOrientation(orientation === "landscape" ? "portrait" : "landscape");
                     }}
                   >
                     Change orientation
@@ -517,5 +510,3 @@ export default function CommissionPage() {
     </div>
   );
 }
-
-// Moved to client component in @/components/LatLngHandler.tsx

@@ -1,16 +1,12 @@
 import {
   MapContainer,
-  MapContainerProps,
   TileLayer,
-  useMap,
 } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import {
   Dispatch,
-  Ref,
   SetStateAction,
   useEffect,
-  useRef,
   useState,
 } from "react";
 import { LatLng, Map as MapType } from "leaflet";
@@ -34,18 +30,18 @@ export default function Map({
     }
   }, [position, zoom, map]);
   useEffect(() => {
-    map?.on("move", (event) => {
+    map?.on("move", () => {
       setPosition(map.getCenter());
     });
 
-    map?.on("zoom", (event) => {
+    map?.on("zoom", () => {
       setZoom(map.getZoom());
     });
     return () => {
       map?.off("move");
       map?.off("zoom");
     };
-  }, [map]);
+  }, [map, setPosition, setZoom]);
 
   return (
     <MapContainer
