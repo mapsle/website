@@ -1,10 +1,18 @@
 import { NextRequest } from "next/server";
-const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+import Stripe from "stripe";
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "");
 
 export async function GET(request: NextRequest) {
-  stripe.checkout.sessions.create({
-    line_items: [],
+  const session = await stripe.checkout.sessions.create({
+    line_items: [
+      {
+        price: "price_1RqUwjGRy7XLTRcO1xefEskq",
+        quantity: 1,
+      },
+    ],
     mode: "payment",
-    success_url: "https://example.com/success",
+    success_url: "http://localhost:3000",
   });
+
+  return Response.json(session);
 }
