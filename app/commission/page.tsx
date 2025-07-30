@@ -517,5 +517,3 @@ export default function CommissionPage() {
     </div>
   );
 }
-
-// Moved to client component in @/components/LatLngHandler.tsx
