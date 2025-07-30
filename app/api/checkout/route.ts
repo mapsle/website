@@ -14,5 +14,5 @@ export async function GET(request: NextRequest) {
     success_url: "http://localhost:3000",
   });
 
-  return Response.json(session);
+  return session.url;
 }
